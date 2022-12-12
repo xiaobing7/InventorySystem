@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+ enum Genre{
+     FICTION = 0;
+     MYSTERY = 1;
+     POETRY = 2;
+     BIOGRAPHY = 3;
+    }
