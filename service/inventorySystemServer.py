@@ -8,7 +8,12 @@ import inventoryService_pb2_grpc
 
 
 class InventoryServicer(inventoryService_pb2_grpc.InventoryServiceServicer):
+    """
+    The database use a list of book object to store books details
+    """
+
     def __init__(self):
+
         self.db = []
         book1 = inventory_pb2.Book()
         book1.isbn = "ISBN9780553393965"
@@ -36,19 +41,26 @@ class InventoryServicer(inventoryService_pb2_grpc.InventoryServiceServicer):
         self.db.append(book3)
 
     def GetBook(self, request, context):
+        # Iterate list of books, to search isbn
+
         for book in self.db:
             if book.isbn == request.isbn:
                 return inventoryService_pb2.BookSearchResponse(book=book)
+        # if the book not exists
         return inventoryService_pb2.BookSearchResponse(None)
 
     def CreateBook(self, request, context):
-        book = request.book
-        if book:
-            self.db.append(book)
-            print("book database after modified: ", self.db)
-            return inventoryService_pb2.BookCreateResponse(message="Create book <%s> successfully" % book.title)
-        else:
+        book_to_add = request.book
+        if not book_to_add:
             return inventoryService_pb2.BookCreateResponse(message="Fail to create book, try again")
+        for book in self.db:
+            if book.isbn == book_to_add.isbn:
+                return inventoryService_pb2.BookCreateResponse(message="The book already exists, try again")
+
+        self.db.append(book_to_add)
+        # to check if book added successfully manually
+        print("book database after modified: ", self.db)
+        return inventoryService_pb2.BookCreateResponse(message="Create book <%s> successfully" % book_to_add.title)
 
 
 def serve():
