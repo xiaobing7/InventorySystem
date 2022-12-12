@@ -1,12 +1,7 @@
 
 syntax = "proto3";
 
-service InventoryService{
-  rpc CreateBook(BookCreateRequest) returns (BookCreateResponse){}
 
-  rpc GetBook(BookSearchRequest) returns (BookSearchResponse){}
-
-}
 
 message Book{
    string isbn = 1;
@@ -37,19 +32,4 @@ message InventoryItem{
 
 
 
-
-message BookSearchRequest{
-  string title= 1;
-}
-
-message BookSearchResponse{
-  Book book = 1;
-}
-message BookCreateRequest{
-  Book book = 1;
-
-}
-message BookCreateResponse{
-  string message = 1;
-}
 

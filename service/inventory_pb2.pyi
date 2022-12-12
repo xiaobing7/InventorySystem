@@ -25,30 +25,6 @@ class Book(_message.Message):
     title: str
     def __init__(self, isbn: _Optional[str] = ..., title: _Optional[str] = ..., author_name: _Optional[str] = ..., genre: _Optional[_Union[Book.Genre, str]] = ..., publish_year: _Optional[int] = ...) -> None: ...
 
-class BookCreateRequest(_message.Message):
-    __slots__ = ["book"]
-    BOOK_FIELD_NUMBER: _ClassVar[int]
-    book: Book
-    def __init__(self, book: _Optional[_Union[Book, _Mapping]] = ...) -> None: ...
-
-class BookCreateResponse(_message.Message):
-    __slots__ = ["message"]
-    MESSAGE_FIELD_NUMBER: _ClassVar[int]
-    message: str
-    def __init__(self, message: _Optional[str] = ...) -> None: ...
-
-class BookSearchRequest(_message.Message):
-    __slots__ = ["title"]
-    TITLE_FIELD_NUMBER: _ClassVar[int]
-    title: str
-    def __init__(self, title: _Optional[str] = ...) -> None: ...
-
-class BookSearchResponse(_message.Message):
-    __slots__ = ["book"]
-    BOOK_FIELD_NUMBER: _ClassVar[int]
-    book: Book
-    def __init__(self, book: _Optional[_Union[Book, _Mapping]] = ...) -> None: ...
-
 class InventoryItem(_message.Message):
     __slots__ = ["book", "inventory_number", "status"]
     class Status(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
