@@ -1,6 +1,0 @@
-syntax = "proto3";
-
-
-message Author{
-      string author_name = 1;
-    }
