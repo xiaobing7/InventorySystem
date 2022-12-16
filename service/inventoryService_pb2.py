@@ -11,7 +11,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-import inventory_pb2 as inventory__pb2
+from service import inventory_pb2 as inventory__pb2
 
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x16inventoryService.proto\x1a\x0finventory.proto\"!\n\x11\x42ookSearchRequest\x12\x0c\n\x04isbn\x18\x01 \x01(\t\")\n\x12\x42ookSearchResponse\x12\x13\n\x04\x62ook\x18\x01 \x01(\x0b\x32\x05.Book\"(\n\x11\x42ookCreateRequest\x12\x13\n\x04\x62ook\x18\x01 \x01(\x0b\x32\x05.Book\"%\n\x12\x42ookCreateResponse\x12\x0f\n\x07message\x18\x01 \x01(\t2\x81\x01\n\x10InventoryService\x12\x37\n\nCreateBook\x12\x12.BookCreateRequest\x1a\x13.BookCreateResponse\"\x00\x12\x34\n\x07GetBook\x12\x12.BookSearchRequest\x1a\x13.BookSearchResponse\"\x00\x62\x06proto3')
